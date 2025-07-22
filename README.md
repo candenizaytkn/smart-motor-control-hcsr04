@@ -1,42 +1,31 @@
+
 # Distance-Based DC Motor Speed Control (Arduino + HC-SR04 + TIP120)
 
-This Arduino project controls the speed of a DC motor based on the distance measured by an HC-SR04 ultrasonic sensor. A TIP120 transistor is used to handle the motor current, and PWM signals control the speed. The farther the object, the faster the motor spins.
+This project uses an HC-SR04 ultrasonic sensor to measure distance and control a DC motor's speed using PWM with an Arduino Uno and a TIP120 transistor.
 
-## Components Used
-
+## Components
 - Arduino UNO
 - HC-SR04 Ultrasonic Sensor
 - DC Motor (3–9V)
 - TIP120 NPN Transistor
 - 2 × 330Ω Resistors (connected in parallel)
 - 1N4007 Diode
-- External Power Supply (9V battery or adapter)
+- External power supply (9V battery or adapter)
 - Breadboard
-- Jumper Wires
+- Jumper wires
 
-## How It Works
+## Circuit Diagram
+See the circuit diagram in the `images/` folder.
 
-1. The ultrasonic sensor sends out sound pulses and receives the echo.
-2. The distance is calculated based on the time it takes for the echo to return.
-3. The Arduino maps this distance to a PWM signal between 1 and 60.
-4. The TIP120 transistor receives the PWM signal and controls the power going to the motor.
-5. As the object moves closer, the motor slows down. As it moves away, the motor speeds up.
+## How it Works
+The ultrasonic sensor measures the distance of an object in front of it. The Arduino reads this distance and adjusts the speed of the DC motor accordingly. The farther the object is, the faster the motor runs. A TIP120 transistor is used to handle higher current for the motor through PWM.
+
+## Code
+The Arduino code can be found in the `motor_distance_control.ino` file.
 
 ## PWM Range
-
-- Minimum Distance (5 cm): PWM = 1
-- Maximum Distance (50 cm): PWM = 60
-
-These values can be adjusted in the code for different motor behavior.
-
-## Files Included
-
-- `motor_distance_control.ino` – Main Arduino sketch
-- `images/circuit_diagram.png` – Fritzing circuit diagram
-- `images/project_photo.jpg` – Real photo of the assembled project
-- `LICENSE` – MIT License
-- `README.md` – This documentation
+- At close range (5 cm): PWM = 1
+- At far range (50 cm): PWM = 60
 
 ## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
